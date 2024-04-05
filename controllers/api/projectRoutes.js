@@ -22,15 +22,40 @@ const withAuth = require("../../utils/auth");
 router.post("/", withAuth, async (req, res) => {
   try {
     const newProject = await Project.create({
-      ...req.body,
+      name: req.body.name,
+      description: req.body.description,
       user_id: req.session.user_id,
     });
-
+    
     res.status(200).json(newProject);
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
+// try {
+//   const newProject = await Project.create({
+//     title: req.body.title,
+//     description: req.body.description,
+//     user_id: req.session.user_id,
+//     // Add other validated/sanitized fields here
+//   });
+  
+//   res.status(200).json(newProject);
+// } catch (err) {
+//   res.status(400).json(err);
+// }
+
+// try {
+//   const newProject = await Project.create({
+//     ...req.body,
+//     user_id: req.session.user_id,
+//   });
+
+//   res.status(200).json(newProject);
+// } catch (err) {
+//   res.status(400).json(err);
+// }
 
 router.delete("/:id", withAuth, async (req, res) => {
   try {
