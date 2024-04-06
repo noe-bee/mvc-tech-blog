@@ -3,6 +3,14 @@
   <p>{{description}}</p>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
   <p>
+
+<h3>Comments:</h3>
+<ul>
+  {{#each comments}}
+      <p>{{ this.text }}</p>
+      <p>Comment by: {{ this.user.name }} on {{format_date date_created}} </p>
+  {{/each}}
+</ul>
     <button class="btn btn-primary">Delete?</button>
   </p>
 </div>

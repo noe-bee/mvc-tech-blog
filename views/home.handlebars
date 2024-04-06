@@ -3,13 +3,8 @@
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
       <a href="/project/{{project.id}}">{{project.title}}</a>
     </h2>
-    <p>
-      <!-- Pass needed_funding value to the helper function -->
-    </p>
     <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p>
   </div>
   <div class="col-md-7">
@@ -17,9 +12,5 @@
       {{project.description}}
     </p>
   </div>
-  {{!-- comment partials (project.comments)--}}
-  {{#each comment as |comment|}}
-  {{>project.comments}}
-  {{/each}}
 </div>
 {{/each}}
