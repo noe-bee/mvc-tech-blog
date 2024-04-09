@@ -36,6 +36,22 @@ const newFormHandler = async (event) => {
       }
     }
   };
+
+  const uptdateButtonHandler = async (event) => {
+    if (event.target.hasAttribute('data-id')) {
+      const id = event.target.getAttribute('data-id');
+  
+      const response = await fetch(`/api/projects/${id}`, {
+        method: 'PUT',
+      });
+  
+      if (response.ok) {
+        document.location.replace('/dash');
+      } else {
+        alert('Failed to update post');
+      }
+    }
+  };
   
   document
     .querySelector('.new-project-form')

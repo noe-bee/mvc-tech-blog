@@ -1,16 +1,41 @@
-<div class="text-center">
-  <h2>{{title}}</h2>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
+{{! project card }}
+{{! <div class="d-flex"> }}
+<div class='container w-50 justify-content-center'>
+  <div class='card text-white bg-success mb-3' style='max-width: 20rem;'>
+    <div class='card-body'>
+      <h4 class='card-title text-center'>{{title}}</h4>
+      <p class='card-text'>{{description}}</p>
+      <div class='card-footer'>
+        <p>Created by {{user.name}} on {{format_date date_created}}</p>
+      </div>
+    </div>
+    <h4 class='text-center'>Comments:</h4>
+    <div>
+      {{#each comments}}
+        <p class='text-center'>{{this.text}}</p>
+        <div class='card-footer'>
+          <p>Commented by:
+            {{this.user.name}}
+            on
+            {{format_date date_created}}
+          </p>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  <button class='btn btn-primary' id=''>Comment</button>
+</div>
+{{! </div>  }}
 
-<h3>Comments:</h3>
+{{!-- <h3>Comments:</h3>
 <ul>
   {{#each comments}}
       <p>{{ this.text }}</p>
       <p>Comment by: {{ this.user.name }} on {{format_date date_created}} </p>
   {{/each}}
 </ul>
-    <button class="btn btn-primary">Delete?</button>
+    <button class="btn btn-primary" id="">Comment</button>
   </p>
-</div>
+</div> --}}
+
+<script src='./js/comment.js'></script>
