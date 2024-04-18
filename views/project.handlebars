@@ -1,4 +1,5 @@
 {{! project card }}
+
 {{! <div class="d-flex"> }}
 <div class='container w-50 justify-content-center'>
   <div class='card text-white bg-success mb-3' style='max-width: 20rem;'>
@@ -10,7 +11,7 @@
       </div>
     </div>
     <h4 class='text-center'>Comments:</h4>
-    <div>
+    <div id="commentsContainer">
       {{#each comments}}
         <p class='text-center'>{{this.text}}</p>
         <div class='card-footer'>
@@ -23,9 +24,52 @@
       {{/each}}
     </div>
   </div>
-  <button class='btn btn-primary' id=''>Comment</button>
+  <button class='btn btn-primary' id='clickComment'>Comment/Update Post</button>
+  {{!-- <button class='btn btn-primary' id='clickUpdate'>Update</button> --}}
 </div>
 {{! </div>  }}
+
+{{!-- add comment form --}}
+<div class="container d-flex justify-content-center">
+<div class="comment-form-container hidden" id="commentContainer" >   
+    <form class="form comment-form" id="comment-form">
+        <div class="form-group">
+            <h2 id="commentFormHeader">
+              <label for="comment" class="form-label mt-4 text-dark">Add Comment:</label>
+                {{!-- <label for="comment" class="text-dark">Comment</label> --}}
+            </h2>
+            <div>
+      <textarea class="form-control" id="commentInput" type="text" rows="3"></textarea>
+        <div class="form-group">
+            <button class="btn btn-dark" id="commentButton" type="click">Add Comment</button>
+        </div>
+    </form>
+</div>
+</div>
+
+
+{{!-- add update form --}}
+<div class="container d-flex justify-content-center">
+<div class="update-form-container hidden" id="updateContainer" >   
+    <form class="form update-form" id="update-form">
+        <div class="form-group">
+            <h2 id="updateFormHeader">
+              <label for="update" class="form-label mt-4 text-dark">Update Post:</label>
+            </h2>
+            <div>
+      <textarea class="form-control" id="updateInput" type="text" rows="3"></textarea>
+        <div class="form-group">
+            <button class="btn btn-dark" id="updateButton" type="click">Update Post</button>
+        </div>
+    </form>
+</div>
+</div>
+
+
+
+
+<script src='/js/comment.js'></script>
+<script src='/js/update.js'></script>
 
 {{!-- <h3>Comments:</h3>
 <ul>
@@ -37,5 +81,3 @@
     <button class="btn btn-primary" id="">Comment</button>
   </p>
 </div> --}}
-
-<script src='./js/comment.js'></script>
