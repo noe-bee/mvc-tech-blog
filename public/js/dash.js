@@ -5,7 +5,7 @@ const newFormHandler = async (event) => {
   const name = document.querySelector('#project-name').value.trim();
   const content = document.querySelector('#project-desc').value.trim();
 
-  //code to create a new post 
+  //code to create a new post
   if (name && content) {
     const response = await fetch(`/api/projects`, {
       method: 'POST',
@@ -57,31 +57,6 @@ const delButtonHandler = async (event) => {
 //   }
 // };
 
-const updatePostHandler = async (event) => {
-  event.preventDefault();
-
-  const name = document.querySelector('#project-name').value.trim();
-  const content = document.querySelector('#project-desc').value.trim();
-  
-//update a post
-const uptdateButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-btn')) {
-    const id = event.target.getAttribute('data-btn');
-
-    const response = await fetch(`/api/projects/${id}`, {
-      method: 'PUT',
-    });
-
-    if (response.ok) {
-      document.location.replace('/dash');
-    } else {
-      alert('Failed to update post');
-    }
-  }
-}
-}
-
-
 
 document
   .querySelector('.new-project-form')
@@ -90,3 +65,4 @@ document
 document
   .querySelector('.project-list')
   .addEventListener('click', delButtonHandler);
+

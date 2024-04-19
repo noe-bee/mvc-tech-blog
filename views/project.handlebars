@@ -41,7 +41,7 @@
             <div>
       <textarea class="form-control" id="commentInput" type="text" rows="3"></textarea>
         <div class="form-group">
-            <button class="btn btn-dark" id="commentButton" type="click">Add Comment</button>
+            <button class="btn btn-dark" id="commentButton" type="click" data-comment-btn='{{id}}'>Add Comment</button>
         </div>
     </form>
 </div>
@@ -59,7 +59,7 @@
             <div>
       <textarea class="form-control" id="updateInput" type="text" rows="3"></textarea>
         <div class="form-group">
-            <button class="btn btn-dark" id="updateButton" type="click">Update Post</button>
+            <button class="btn btn-dark" id="updateButton" type="click" data-update-btn='{{id}}'>Update Post</button>
         </div>
     </form>
 </div>
@@ -70,6 +70,7 @@
 
 <script src='/js/comment.js'></script>
 <script src='/js/update.js'></script>
+
 
 {{!-- <h3>Comments:</h3>
 <ul>

@@ -16,6 +16,5 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-//delete/update comment route (optional)
 
 module.exports = router;

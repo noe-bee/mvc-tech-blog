@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Project, User, Comment } = require('../models');
-const withAuth = require('../utils/auth')
+const withAuth = require('../utils/auth');
 
 //get all projects
 router.get('/', async (req, res) => {
@@ -17,11 +17,11 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the template can read it
     const projects = projectData.map((project) => project.get({ plain: true }));
-    console.log(projects)
+    console.log(projects);
     // Pass serialized data and session flag into template
-    res.render('home', { 
-      projects, 
-      logged_in: req.session.logged_in 
+    res.render('home', {
+      projects,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -38,8 +38,8 @@ router.get('/project/:id', async (req, res) => {
           attributes: ['name'],
         },
         {
-          model: Comment, 
-          include: User
+          model: Comment,
+          include: User,
         },
       ],
     });
@@ -48,7 +48,7 @@ router.get('/project/:id', async (req, res) => {
 
     res.render('project', {
       ...project,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -68,11 +68,11 @@ router.get('/comment/:id', async (req, res) => {
     });
 
     const comment = commentData.get({ plain: true });
-    console.log(comment)
+    console.log(comment);
 
     res.render('comment', {
       ...comment,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -93,7 +93,7 @@ router.get('/dash', withAuth, async (req, res) => {
     console.log(user);
     res.render('dash', {
       ...user,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);

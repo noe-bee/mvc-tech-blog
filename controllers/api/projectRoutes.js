@@ -51,19 +51,46 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 //update route for project data
-router.put('/project/:id', withAuth, async (req, res) => {
-  try {
-    // Find the post by ID
-    const updateProject = await Project.findByPk(req.params.id);
-    if (updateProject) {
-      // Update the post
-      updateProject.title = newTitle;
-      updateProject.description = newDescription;
-      await updateProject.save();
-    }
+// router.put('/project/:id', withAuth, async (req, res) => {
+//   try {
+//     // Find the post by ID
+//     const updateProject = await Project.findByPk(req.params.id);
+//     if (updateProject) {
+//       // Update the post
+//       updateProject.title = newTitle;
+//       updateProject.description = newDescription;
+//       await updateProject.save();
+//     }
 
-    res.status(200).json(updateProject);
+//     res.status(200).json(updateProject);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedProject = await Project.update(
+      {
+        title: req.body.title,
+        description: req.body.description,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+
+    if (!updatedProject) {
+      res.status(404).json({ message: 'No project found with this id!' });
+      return;
+    }
+    // res.json(updatedProject);
+    res.status(200).json(updatedProject);
   } catch (err) {
+    console.log(err);
+    // res.json(err);
     res.status(500).json(err);
   }
 });

@@ -1,24 +1,3 @@
-// const commentButtonHandler = async (event) => {
-//     if (event.target.hasAttribute('data-id')) {
-//       const id = event.target.getAttribute('data-id');
-
-//       const response = await fetch(`/api/projects/${id}`, {
-//         method: 'DELETE',
-//       });
-
-//       if (response.ok) {
-//         document.location.replace('/dash');
-//       } else {
-//         alert('Failed to delete post');
-//       }
-//     }
-//   };
-
-//   document
-//   .querySelector('.project-list')
-//   .addEventListener('submit', commentFormHandler);
-
-// 
 
 var commentDiv = document.getElementById('commentContainer');
 var updateDiv = document.getElementById('updateContainer');
