@@ -10,15 +10,6 @@ function renderCommentContainer(click) {
   }
 }
 
-//function will show the update post container when u click the button
-// NOTE: future implementation; fix the joined containers
-// function renderUpdateContainer(click) {
-//   if (updateDiv.classList.contains('hidden')) {
-//     updateDiv.classList.replace('hidden', 'visible');
-//     // commentDiv.classList
-//   }
-// }
-
 // LOGIC for creating a comment and rendering it to a post
 const commentPostHandler = async (event) => {
   event.preventDefault();
@@ -37,7 +28,7 @@ const commentPostHandler = async (event) => {
       },
     });
 
-    //after adding the updated description, send to dash page again
+    //after adding the updated description, send to the comment's page
     if (response.ok) {
       const parsedComment = await response.json()
       document.location.replace(`/comment/${parsedComment.id}`);
@@ -50,7 +41,7 @@ const commentPostHandler = async (event) => {
 
 // EVENT LISTENTERS BELOW
 
-// Event listener for when the user posts a comment
+// event listener for when the user posts a comment
 document
   .getElementById('commentContainer')
   .addEventListener('click', commentPostHandler);
@@ -59,7 +50,3 @@ document
 document
   .getElementById('clickComment')
   .addEventListener('click', renderCommentContainer);
-
-// document
-//   .getElementById('clickUpdate')
-//   .addEventListener('click', renderUpdateContainer);
