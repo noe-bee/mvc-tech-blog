@@ -40,24 +40,6 @@ const delButtonHandler = async (event) => {
   }
 };
 
-// code to update a post
-// if (title && description) {
-//   const response = await fetch(`/api/projects`, {
-//     method: 'PUT',
-//     body: JSON.stringify({ newTitle, newDescritpion }),
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
-
-//   if (response.ok) {
-//     document.location.replace('/dash');
-//   } else {
-//     alert('Failed to update post');
-//   }
-// };
-
-
 document
   .querySelector('.new-project-form')
   .addEventListener('submit', newFormHandler);
@@ -65,4 +47,3 @@ document
 document
   .querySelector('.project-list')
   .addEventListener('click', delButtonHandler);
-

@@ -50,24 +50,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-//update route for project data
-// router.put('/project/:id', withAuth, async (req, res) => {
-//   try {
-//     // Find the post by ID
-//     const updateProject = await Project.findByPk(req.params.id);
-//     if (updateProject) {
-//       // Update the post
-//       updateProject.title = newTitle;
-//       updateProject.description = newDescription;
-//       await updateProject.save();
-//     }
-
-//     res.status(200).json(updateProject);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
+// PUT to update a new project
 router.put('/:id', async (req, res) => {
   try {
     const updatedProject = await Project.update(
