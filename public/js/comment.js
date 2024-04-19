@@ -11,6 +11,7 @@ function renderCommentContainer(click) {
 }
 
 //function will show the update post container when u click the button
+// NOTE: future implementation; fix the joined containers
 // function renderUpdateContainer(click) {
 //   if (updateDiv.classList.contains('hidden')) {
 //     updateDiv.classList.replace('hidden', 'visible');
@@ -18,61 +19,19 @@ function renderCommentContainer(click) {
 //   }
 // }
 
-// COMMENT FUNCTION BELOW
-
-// // Sample array to store comments
-// let comments = [];
-
-// // Function to handle posting a comment
-// function postComment(event) {
-//   event.preventDefault();
-//   // Get the user's input from a form input field
-//   let commentInput = document.getElementById('commentInput').value;
-
-//   // Create a new comment object
-//   let newComment = {
-//     user: 'Anonymous', // You can add a user field if needed
-//     text: commentInput,
-//     timestamp: new Date(),
-//   };
-
-//   // Add the new comment to the array
-//   comments.push(newComment);
-
-//   // Update the display to show the new comment
-//   displayComments();
-// }
-
-// // Function to display comments
-// function displayComments() {
-//   // event.preventDefault()
-//   // Get the element where comments will be displayed
-//   let commentsContainer = document.getElementById('commentsContainer');
-//   commentsContainer.innerHTML = ''; // Clear previous comments
-
-//   // Loop through the comments array and display each comment
-//   comments.forEach((comment) => {
-//     let commentElement = document.createElement('div');
-//     commentElement.innerHTML = `
-//             <strong>${comment.user}</strong> - ${comment.text} - ${comment.timestamp}
-//         `;
-//     commentsContainer.appendChild(commentElement);
-//   });
-// }
-
-// logic for creating a comment
+// logic for creating a comment and rendering it to a post
 const commentPostHandler = async (event) => {
   event.preventDefault();
 
   const commentText = document.querySelector('#commentInput').value.trim();
-
+  console.log(commentText);
   if (commentText) {
     const id = event.target.getAttribute('data-comment-btn');
-
+   console.log(id);
     //using fetch, await the new comment text and 'POST' it into the existing project
-    const response = await fetch(`/api/comments/${id}`, {
+    const response = await fetch(`/api/comments`, {
       method: 'POST',
-      body: JSON.stringify({ commentText }),
+      body: JSON.stringify({ commentText, id }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -80,7 +39,8 @@ const commentPostHandler = async (event) => {
 
     //after adding the updated description, send to dash page again
     if (response.ok) {
-      document.location.replace(`/comment/${id}`);
+      const parsedComment = await response.json()
+      document.location.replace(`/comment/${parsedComment.id}`);
     } else {
       //   console.log(error);
       alert(response.statusText);
@@ -94,7 +54,6 @@ const commentPostHandler = async (event) => {
 document
   .getElementById('commentContainer')
   .addEventListener('click', commentPostHandler);
-
 
 //grabbing the 'comment' button on project
 document
