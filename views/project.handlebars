@@ -1,6 +1,5 @@
 {{! project card }}
 
-{{! <div class="d-flex"> }}
 <div class='container w-50 justify-content-center'>
   <div class='card text-white bg-success mb-3' style='max-width: 20rem;'>
     <div class='card-body'>
@@ -24,19 +23,17 @@
       {{/each}}
     </div>
   </div>
-  <button class='btn btn-primary' id='clickComment'>Comment/Update Post</button>
+  <button class='btn btn-primary' id='clickComment'>Comment/Update Project</button>
   {{!-- <button class='btn btn-primary' id='clickUpdate'>Update</button> --}}
 </div>
-{{! </div>  }}
 
-{{!-- add comment form --}}
+{{!-- USER add Comment form --}}
 <div class="container d-flex justify-content-center">
 <div class="comment-form-container hidden" id="commentContainer" >   
     <form class="form comment-form" id="comment-form">
         <div class="form-group">
             <h2 id="commentFormHeader">
               <label for="comment" class="form-label mt-4 text-dark">Add Comment:</label>
-                {{!-- <label for="comment" class="text-dark">Comment</label> --}}
             </h2>
             <div>
       <textarea class="form-control" id="commentInput" type="text" rows="3"></textarea>
@@ -48,37 +45,23 @@
 </div>
 
 
-{{!-- add update form --}}
+{{!-- USER Update form --}}
 <div class="container d-flex justify-content-center">
 <div class="update-form-container hidden" id="updateContainer" >   
     <form class="form update-form" id="update-form">
         <div class="form-group">
             <h2 id="updateFormHeader">
-              <label for="update" class="form-label mt-4 text-dark">Update Post:</label>
+              <label for="update" class="form-label mt-4 text-dark">Update Project:</label>
             </h2>
             <div>
       <textarea class="form-control" id="updateInput" type="text" rows="3"></textarea>
         <div class="form-group">
-            <button class="btn btn-dark" id="updateButton" type="click" data-update-btn='{{id}}'>Update Post</button>
+            <button class="btn btn-dark" id="updateButton" type="click" data-update-btn='{{id}}'>Update Project</button>
         </div>
     </form>
 </div>
 </div>
 
 
-
-
 <script src='/js/comment.js'></script>
 <script src='/js/update.js'></script>
-
-
-{{!-- <h3>Comments:</h3>
-<ul>
-  {{#each comments}}
-      <p>{{ this.text }}</p>
-      <p>Comment by: {{ this.user.name }} on {{format_date date_created}} </p>
-  {{/each}}
-</ul>
-    <button class="btn btn-primary" id="">Comment</button>
-  </p>
-</div> --}}

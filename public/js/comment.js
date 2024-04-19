@@ -1,8 +1,8 @@
-//need both divs
+//reminder: need both divs
 var commentDiv = document.getElementById('commentContainer');
 var updateDiv = document.getElementById('updateContainer');
 
-//function will show the add comment and update container when you click the button
+//FUNCTION will show the add comment and update container when you click the button
 function renderCommentContainer(click) {
   if (commentDiv.classList.contains('hidden')) {
     commentDiv.classList.replace('hidden', 'visible');
@@ -19,7 +19,7 @@ function renderCommentContainer(click) {
 //   }
 // }
 
-// logic for creating a comment and rendering it to a post
+// LOGIC for creating a comment and rendering it to a post
 const commentPostHandler = async (event) => {
   event.preventDefault();
 

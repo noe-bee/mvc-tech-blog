@@ -89,7 +89,7 @@ router.get('/dash', withAuth, async (req, res) => {
 
     // Sanitization
     const user = userData.get({ plain: true });
-    console.log(user);
+    // console.log(user);
     res.render('dash', {
       ...user,
       logged_in: req.session.logged_in,
